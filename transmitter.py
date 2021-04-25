@@ -20,9 +20,15 @@ if __name__ == "__main__":
 	)
 
 	no_of_users = int(sys.argv[2])
-	message = sys.argv[3]
 
-	print("NO_OF_USERS: {0}, MESSAGE: {1}".format(no_of_users, message))
-	data = text2binary(message)
-	sock.sendall(data)
+	messages = []
+
+	for i in range(no_of_users):
+		cur_message = input(f"Enter message for User {i}: ")
+		messages.append(cur_message)
+
+	print("\nNO_OF_USERS: {0}\nMESSAGES: {1}".format(no_of_users, messages))
+	data = text2binary(messages[0])
+	print(data)
+	sock.sendall(pickle.dumps(data))
 	sock.close()	
