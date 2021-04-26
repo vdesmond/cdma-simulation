@@ -4,10 +4,19 @@ import sys
 import numpy as np
 from walsh_gen import walsh_generator_matrix
 
-class UserPair():
-    def __init__(self, uId, code):
-        self.uId = uId
-        self.code = np.reshape(code, (1, -1))
+class UserEncode():
+	
+	def __init__(self, uId, code):
+		self.uId = uId
+		self.code = np.reshape(code, (1, -1))
+
+	def encode(self, data):
+		return np.dot(data.T, self.code)
+
+	def mix(self, data, channel):
+		d = self.encode(data)
+		channel = channel + d
+		return channel
 
 
 def text2binarr(message):
@@ -18,24 +27,25 @@ def text2binarr(message):
 
 def cdma(no_of_users, messages):
 
-	userPairs = []
-
-	# Find longest message
+	# ? Find longest message
 	max_len = len(max(messages, key=len))
-	print(max_len)
 	equilen_messages = [msg.ljust(max_len, ' ') for msg in messages]
 
+	# ? Generate Walsh Matrix
 	walsh = np.array(walsh_generator_matrix([[-1]], no_of_users), dtype=int)
 	
-	symbols = map(text2binarr, equilen_messages)
-	for symbol in symbols:
-		print(symbol)
-		print(symbol.shape)
+	# ? Convert string to symbol array
+	symbols = list((map(text2binarr, equilen_messages)))
 
-	channel = np.zeros((max_len, walsh.shape[0]), dtype=int)
+	# ? Create Channel matrix
+	channel = np.zeros((max_len * 8, walsh.shape[0]), dtype=int)
 
+	for i in range(no_of_users):
+		u = UserEncode(uId=i, code=walsh[i])
+		a = np.array(symbols[i])
+		channel = u.mix(a, channel)
 
-	return "10000010011" # temp
+	return channel # temp
 
 if __name__ == "__main__":	
 	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -53,5 +63,5 @@ if __name__ == "__main__":
 
 	print("\nNO_OF_USERS: {0}\nMESSAGES: {1}".format(no_of_users, messages))
 	data = cdma(no_of_users, messages)
-	sock.sendall(pickle.dumps(data))
+	sock.sendall(pickle.dumps(data, protocol=2))
 	sock.close()	

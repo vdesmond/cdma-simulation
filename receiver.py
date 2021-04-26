@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
 	conn, _addr = sock.accept()
 	print("Received connection from: ", _addr)
-	data = pickle.loads(conn.recv(1024))
+	data = pickle.loads(conn.recv(4096))
 	print(data)
 	conn.close()
 		 
