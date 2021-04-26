@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# ? Note that walsh_generator_matrix is recursive in nature
+# ? Note that walsh_code_generator is recursive in nature
 
-def walsh_generator_matrix(ini_mat, mat_size):
+def walsh_code_generator(ini_mat, mat_size):
     """
-    This function generates outerwalsh code matrix for chip sequences in CDMA
+    This function generates Walsh code using Hadamard matrices for chip sequences in CDMA
 
     Args:
-            ini_mat (list): Inital matrix for Walsh code
+            ini_mat (list): Initial Hadamard matrix
             mat_size (int): Walsh code of size N (nearest power of 2 greater than mat_size)
     """
     templist = ini_mat.copy()
@@ -24,8 +24,12 @@ def walsh_generator_matrix(ini_mat, mat_size):
     cnt = 0
     for i in range(limit):
     	for j in range(limit):
+                
+                # ? If bottom right matrix, multiply by -1
     		if i >= limit / 2 and j >= limit / 2:
     			recurs_mat[i][j] = templist[outer][inner] * -1
+
+                # ? Else copy the matrix as it is
     		else:
     			recurs_mat[i][j] = templist[outer][inner]
     		inner+= 1
@@ -37,4 +41,4 @@ def walsh_generator_matrix(ini_mat, mat_size):
     		outer, inner = 0, 0
     	cnt += 1
 
-    return walsh_generator_matrix(recurs_mat, mat_size)
+    return walsh_code_generator(recurs_mat, mat_size)

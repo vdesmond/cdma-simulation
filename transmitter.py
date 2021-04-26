@@ -51,7 +51,7 @@ def text2binarr(message):
 	bin2arr = np.array([[int(i) for i in mes2bin]], dtype=int)
 	return bin2arr
 
-def cdma(no_of_users, messages):
+def cdma_channel(no_of_users, messages):
 	"""
 	This function generates the final signal to be sent in the channel
 	after CDMA with message and codes
@@ -64,7 +64,7 @@ def cdma(no_of_users, messages):
 		channel_data (ndarray): 2D array containing all data to be sent in the channel
 	"""
 
-	# ? Find longest message
+	# ? Find longest message and pad other messages
 	max_len = len(max(messages, key=len))
 	equilen_messages = [msg.ljust(max_len, ' ') for msg in messages]
 
@@ -105,7 +105,7 @@ if __name__ == "__main__":
 		messages.append(cur_message)
 
 	print("\nNO_OF_USERS: {0}\nMESSAGES: {1}".format(no_of_users, messages))
-	data = cdma(no_of_users, messages)
+	data = cdma_channel(no_of_users, messages)
 
 	sock.sendall(pickle.dumps(data))
 	sock.close()
