@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import numpy as np
 
 # ? Note that walsh_code_generator is recursive in nature
-
 def walsh_code_generator(ini_mat, mat_size):
     """
     This function generates Walsh code using Hadamard matrices for chip sequences in CDMA
@@ -42,3 +42,34 @@ def walsh_code_generator(ini_mat, mat_size):
     	cnt += 1
 
     return walsh_code_generator(recurs_mat, mat_size)
+
+def text2binarr(message):
+	"""Converts text to binary array 
+
+	Args:
+		message (str): text string
+
+	Returns:
+		bin2arr (ndarray): 2D binary array
+	"""
+	mes2bin = "".join(f"{ord(char):08b}" for char in message)
+	bin2arr = np.array([[int(i) for i in mes2bin]], dtype=int)
+	return bin2arr
+
+def binarr2text(binary_array):
+	"""Converts text to binary array 
+
+	Args:
+		bin2arr (ndarray): 2D binary array
+		
+	Returns:
+		message (str): text string
+	"""
+	temp = list(zip(*[iter(binary_array.flat)]*8))
+	message = ""
+
+	for char in temp:
+		binstr = int("".join(str(bit) for bit in char), 2)
+		message += chr(binstr)
+	
+	return message

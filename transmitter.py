@@ -2,7 +2,11 @@ import socket
 import pickle
 import sys
 import numpy as np
-from walsh_gen import walsh_code_generator
+import utils
+import logging
+
+# ? Configure logging
+logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 class UserEncode():
 	"""Class to contain encoding and mixing methods for CDMA
@@ -38,19 +42,6 @@ class UserEncode():
 		return channel + d
 
 
-def text2binarr(message):
-	"""Converts text to binary array 
-
-	Args:
-		message (str): text string
-
-	Returns:
-		bin2arr (ndarray): 2D binary array
-	"""
-	mes2bin = "".join(f"{ord(char):08b}" for char in message)
-	bin2arr = np.array([[int(i) for i in mes2bin]], dtype=int)
-	return bin2arr
-
 def cdma_channel(no_of_users, messages):
 	"""
 	This function generates the final signal to be sent in the channel
@@ -69,10 +60,10 @@ def cdma_channel(no_of_users, messages):
 	equilen_messages = [msg.ljust(max_len, ' ') for msg in messages]
 
 	# ? Generate Walsh Matrix
-	walsh = np.array(walsh_code_generator([[-1]], no_of_users), dtype=int)
+	walsh = np.array(utils.walsh_code_generator([[-1]], no_of_users), dtype=int)
 	
 	# ? Convert string to symbol array
-	symbols = list((map(text2binarr, equilen_messages)))
+	symbols = list((map(utils.text2binarr, equilen_messages)))
 
 	# ? Create Channel matrix
 	channel = np.zeros((max_len * 8, walsh.shape[0]), dtype=int)
@@ -81,6 +72,9 @@ def cdma_channel(no_of_users, messages):
 	for i in range(no_of_users):
 		u = UserEncode(uId=i, code=walsh[i])
 		a = np.array(symbols[i])
+
+		logging.debug("Symbols sent by User %d:", u.uId)
+		logging.debug(symbols[i])
 
 		# ? Encodes the data with code and updates the channel data
 		channel = u.mix(a, channel)
@@ -94,18 +88,20 @@ if __name__ == "__main__":
 
 	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	sock.connect(
-		(socket.gethostname(), int(sys.argv[1]))
+		(socket.gethostname(), 3300)
 	)
 
-	no_of_users = int(sys.argv[2])
+	no_of_users = int(sys.argv[1])
 	messages = []
 
 	for i in range(no_of_users):
 		cur_message = input(f"Enter message for User {i}: ")
 		messages.append(cur_message)
 
-	print("\nNO_OF_USERS: {0}\nMESSAGES: {1}".format(no_of_users, messages))
+	logging.info("\nNO_OF_USERS: {0}\nMESSAGES: {1}".format(no_of_users, messages))
 	data = cdma_channel(no_of_users, messages)
+	
+	logging.debug(f"Channel Matrix:\n{data}")
 
 	sock.sendall(pickle.dumps(data))
 	sock.close()
