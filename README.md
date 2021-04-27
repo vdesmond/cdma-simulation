@@ -1,4 +1,6 @@
-# CDMA Simulation 
+# CDMA Simulation
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
 Simulation of Code Division Multiple Access protocol using Walsh codes.
 
@@ -9,10 +11,11 @@ Code Division Multiple Access, CDMA is an innovative use of direct sequence spre
 
 CDMA has a number of distinguishing features that are key to spread spectrum transmission technologies:
 
-- **Use of wide bandwidth**:  CDMA, like other spread spectrum technologies uses a wider bandwidth than would otherwise be needed for the transmission of the data. This results in a number of advantages including an increased immunity to interference or jamming, and multiple user access.
+- **Use of wide bandwidth**:  CDMA, like other spread spectrum technologies uses a wider bandwidth than would otherwise be needed for the transmission of the data. This results in a number of advantages including an increased immunity to interference or jamming (AKA jamming margin), and multiple user access.
 - **Spreading codes used**:   In order to achieve the increased bandwidth, the data is spread by use of a code which is independent of the data.
 - **Level of security**:   In order to receive the data, the receiver must have a knowledge of the spreading code, without this it is not possible to decipher the transmitted data, and this gives a measure of security.
 - **Multiple access**:   The use of the spreading codes which are independent for each user along with synchronous reception allow multiple users to access the same channel simultaneously.
+- **Graceful Degradation**:   CDMA systems minimize the impact of interference from a new user by distributing the interference power (inversely proportional to the length of spreading code) equally among all existing users. This ensures no single user/group of users are affected in particular.
 
 ### Correlation
 Correlation is a method of measurement of how precisely a given signal matches with a desired code. In CDMA technology, each user is assigned with a different code, the code which is being assigned or chosen by the user is very important to modulate the signal because it is related to the performance of the CDMA system.
@@ -65,7 +68,8 @@ These can be changed as per requirements.
 ### Optional
 
 - Set logging level to `DEBUG`. (Default is `INFO`)
-- The comments are written to be more useful if used in conjecture with [Better Comments Extension](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) 
+- The comments are written to be more useful if used in conjecture with [Better Comments Extension](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments)
+- There are also some methods in `utils.py` to enable sending images instead of text using `base64` encoded strings. However, it is not used in main code as there might be some buffer issues in socket for large strings.
 
 ### Output Examples
 
@@ -75,21 +79,33 @@ With Logging level `INFO`
 With Logging level `DEBUG`
 ![INFO](./docs/img2.png)
 
+### Note
+
+1. This code only simulates the use of Walsh codes in CDMA systems and thus ignores the other aspects in a complete CDMA system like modulation, demodulation, noise, etc. For a complete simulation of CDMA, see these:
+   - [CDMA Based Wireless Transceiver System MATLAB Simulation and FPGA Implementation](https://ieeexplore.ieee.org/document/4382897)
+   - [Simulation of CDMA using measured channel impulse response data](https://ieeexplore.ieee.org/document/507503)
+   - [Matlab Simulation for Generation and Performance Analysis in CDMA](https://www.hilarispublisher.com/open-access/matlab-simulation-for-generation-and-performance-analysis-of-gold-codes-in-cdma-2155-6210-1000243.pdf)
+   - [CDMA Simulation](https://cnx.org/exports/381aff65-259e-4360-82c3-cd29ac139e05@1.1.pdf/cdma-simulation-1.1.pdf)
+2. This system is used mainly in voice communications, however dealing with strings is much easier than sound in python.
 
 ## References
 
 ### Links
 
-1. [Walsh Codes, PN Sequences and their role in CDMA Technology](https://www.cse.iitd.ac.in/~cs1120231/walsh.pdf)
+[1] $~~~~$ [Walsh Codes, PN Sequences and their role in CDMA Technology](https://www.cse.iitd.ac.in/~cs1120231/walsh.pdf)
 
-2. [CDMA basics and Walsh codes](http://morse.colorado.edu/~tlen5510/text/classwebch7.html)
+[2] $~~~~$ [CDMA basics and Walsh codes](http://morse.colorado.edu/~tlen5510/text/classwebch7.html)
 
-3. [Code division multiple access, Wikipedia](https://en.wikipedia.org/wiki/Code-division_multiple_access)
+[3] $~~~~$ [Code division multiple access, Wikipedia](https://en.wikipedia.org/wiki/Code-division_multiple_access)
 
-4. [CDMA Techniques](https://www.tutorialspoint.com/cdma/cdma_techniques.htm)
+[4] $~~~~$ [CDMA Techniques](https://www.tutorialspoint.com/cdma/cdma_techniques.htm)
 
 ### Books
 
-1.    T. Rappaport, Wireless Communications: Principles and Practice, 2nd ed., (Upper Saddle River, N.J.: Prentice Hall, 2002).
+[1] $~~~~$ T. Rappaport, Wireless Communications: Principles and Practice, 2nd ed., (Upper Saddle River, N.J.: Prentice Hall, 2002).
 
-2.    A. Molisch, Wireless Communications, (Chichester, UK: IEEE press - John Wiley, 2005).
+[2] $~~~~$ A. Molisch, Wireless Communications, (Chichester, UK: IEEE press - John Wiley, 2005).
+
+## License
+
+This software is licensed under the terms of the [MIT License](./LICENSE).
