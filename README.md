@@ -85,26 +85,26 @@ With Logging level `DEBUG`
    - [CDMA Based Wireless Transceiver System MATLAB Simulation and FPGA Implementation](https://ieeexplore.ieee.org/document/4382897)
    - [Simulation of CDMA using measured channel impulse response data](https://ieeexplore.ieee.org/document/507503)
    - [Matlab Simulation for Generation and Performance Analysis in CDMA](https://www.hilarispublisher.com/open-access/matlab-simulation-for-generation-and-performance-analysis-of-gold-codes-in-cdma-2155-6210-1000243.pdf)
-   - [CDMA Simulation](https://cnx.org/exports/381aff65-259e-4360-82c3-cd29ac139e05@1.1.pdf/cdma-simulation-1.1.pdf)
+   - [CDMA Simulation](https://cnx.org/exports/381aff65-259e-4360-82c3-cd29ac139e05@1.1.pdf/cdma-simulation-1.1.pdf)<br></br>
 2. This system is used mainly in voice communications, however dealing with strings is much easier than sound in python.
 
 ## References
 
 ### Links
 
-[1] $~~~~$ [Walsh Codes, PN Sequences and their role in CDMA Technology](https://www.cse.iitd.ac.in/~cs1120231/walsh.pdf)
+[1] &emsp; [Walsh Codes, PN Sequences and their role in CDMA Technology](https://www.cse.iitd.ac.in/~cs1120231/walsh.pdf)
 
-[2] $~~~~$ [CDMA basics and Walsh codes](http://morse.colorado.edu/~tlen5510/text/classwebch7.html)
+[2] &emsp; [CDMA basics and Walsh codes](http://morse.colorado.edu/~tlen5510/text/classwebch7.html)
 
-[3] $~~~~$ [Code division multiple access, Wikipedia](https://en.wikipedia.org/wiki/Code-division_multiple_access)
+[3] &emsp; [Code division multiple access, Wikipedia](https://en.wikipedia.org/wiki/Code-division_multiple_access)
 
-[4] $~~~~$ [CDMA Techniques](https://www.tutorialspoint.com/cdma/cdma_techniques.htm)
+[4] &emsp; [CDMA Techniques](https://www.tutorialspoint.com/cdma/cdma_techniques.htm)
 
 ### Books
 
-[1] $~~~~$ T. Rappaport, Wireless Communications: Principles and Practice, 2nd ed., (Upper Saddle River, N.J.: Prentice Hall, 2002).
+[1] &emsp; T. Rappaport, Wireless Communications: Principles and Practice, 2nd ed., (Upper Saddle River, N.J.: Prentice Hall, 2002).
 
-[2] $~~~~$ A. Molisch, Wireless Communications, (Chichester, UK: IEEE press - John Wiley, 2005).
+[2] &emsp; A. Molisch, Wireless Communications, (Chichester, UK: IEEE press - John Wiley, 2005).
 
 ## License
 
