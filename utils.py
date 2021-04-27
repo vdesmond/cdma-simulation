@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import numpy as np
+import base64
+import requests
 
 # ? Note that walsh_code_generator is recursive in nature
 def walsh_code_generator(ini_mat, mat_size):
@@ -59,10 +61,10 @@ def text2binarr(message):
 
 
 def binarr2text(binary_array):
-    """Converts text to binary array
+    """Converts binary array to text
 
     Args:
-            bin2arr (ndarray): 2D binary array
+            binary_array (ndarray): 2D binary array
 
     Returns:
             message (str): text string
@@ -75,3 +77,32 @@ def binarr2text(binary_array):
         message += chr(binstr)
 
     return message
+
+
+def img2binarr(image_url):
+    """Converts image obtained from URL to binary array
+
+    Args:
+            image_url (str): URL of image
+
+    Returns:
+            binary_array (ndarray): 2D binary array
+    """
+    output = base64.b64encode(requests.get(image_url).content)
+    binary_array = text2binarr(str(output)[2:-1])
+    return binary_array
+
+
+def binarr2img(binary_array, id, path):
+    """Converts binary array to images and saves it inside given path
+
+    Args:
+        binary_array (ndarray): 2D binary array
+        id (int): User ID
+        path (str): Path to save the images
+    """
+    temp = binarr2text(binary_array)
+    b64string = bytes(temp, "utf-8")
+
+    with open(path + f"image_user_{id}.png", "wb") as fh:
+        fh.write(base64.decodebytes(b64string))

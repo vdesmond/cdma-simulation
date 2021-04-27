@@ -24,9 +24,13 @@ It can be shown that *orthogonal codes* have a cross-correlation equal to zero; 
 ### Walsh Codes
 Walsh Codes are most commonly used in the orthogonal codes of CDMA applications. These codes correspond to lines of a special square matrix called the Hadamard matrix. For a set of Walsh codes of length N, it consists of n lines to form a square matrix of *n×n* Walsh code. Walsh matrices are just Hadamard matrices and can be created using the given formula, given an initial matrix. This is also why Walsh codes are also called Walsh-Hadamard codes
 
-<div align="center">
-<a align="center" href="https://www.codecogs.com/eqnedit.php?latex=W_{2n}&space;\&space;=\&space;\begin{bmatrix}&space;W_{n}&space;&&space;W_{n}\\&space;W_{n}&space;&&space;\overline{W_{n}}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?W_{2n}&space;\&space;=\&space;\begin{bmatrix}&space;W_{n}&space;&&space;W_{n}\\&space;W_{n}&space;&&space;\overline{W_{n}}&space;\end{bmatrix}" title="W_{2n} \ =\ \begin{bmatrix} W_{n} & W_{n}\\ W_{n} & \overline{W_{n}} \end{bmatrix}" /></a>
-</div>
+
+<p align="center">
+<br>
+  <img width="202" height="60" src="./docs/eq1.png">
+</p>
+
+
 
 ## Code
 
