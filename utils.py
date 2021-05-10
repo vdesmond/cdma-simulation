@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import numpy as np
 import base64
+
+import numpy as np
 import requests
+
 
 # ? Note that walsh_code_generator is recursive in nature
 def walsh_code_generator(ini_mat, mat_size):

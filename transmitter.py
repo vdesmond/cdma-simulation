@@ -1,9 +1,11 @@
-import socket
-import pickle
-import sys
-import numpy as np
-import utils
 import logging
+import pickle
+import socket
+import sys
+
+import numpy as np
+
+import utils
 
 # ? Configure logging
 logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.DEBUG)
