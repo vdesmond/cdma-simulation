@@ -1,6 +1,6 @@
 # CDMA Simulation
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
-[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![MIT license](https://img.shields.io/github/license/Vignesh-Desmond/receiver-diversity-combining?style=for-the-badge)](https://lbesson.mit-license.org/)
+[![made-with-python](https://img.shields.io/badge/python-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white")](https://www.python.org/)
 
 Simulation of Code Division Multiple Access protocol using Walsh codes.
 
@@ -73,11 +73,14 @@ These can be changed as per requirements.
 
 ### Output Examples
 
-With Logging level `INFO`
-![INFO](./docs/img1.png)
-
-With Logging level `DEBUG`
-![INFO](./docs/img2.png)
+<p align="center">
+  <t>With logging level <b>INFO</b> </t><br><br>
+  <img src="./docs/img1.png">
+</p>
+<p align="center">
+  <t>With logging level <b>DEBUG</b> </t><br><br>
+  <img src="./docs/img2.png">
+</p>
 
 ### Note
 
