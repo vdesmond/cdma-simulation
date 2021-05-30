@@ -1,6 +1,6 @@
 # CDMA Simulation
-[![MIT license](https://img.shields.io/github/license/Vignesh-Desmond/receiver-diversity-combining?style=for-the-badge)](https://lbesson.mit-license.org/)
-[![made-with-python](https://img.shields.io/badge/python-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white")](https://www.python.org/)
+[![MIT license](https://img.shields.io/github/license/Vignesh-Desmond/cdma-simulation?style=for-the-badge)](https://lbesson.mit-license.org/)
+[![made-with-python](https://img.shields.io/badge/python-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
 Simulation of Code Division Multiple Access protocol using Walsh codes.
 
@@ -88,7 +88,7 @@ These can be changed as per requirements.
    - [CDMA Based Wireless Transceiver System MATLAB Simulation and FPGA Implementation](https://ieeexplore.ieee.org/document/4382897)
    - [Simulation of CDMA using measured channel impulse response data](https://ieeexplore.ieee.org/document/507503)
    - [Matlab Simulation for Generation and Performance Analysis in CDMA](https://www.hilarispublisher.com/open-access/matlab-simulation-for-generation-and-performance-analysis-of-gold-codes-in-cdma-2155-6210-1000243.pdf)
-   - [CDMA Simulation](https://cnx.org/exports/381aff65-259e-4360-82c3-cd29ac139e05@1.1.pdf/cdma-simulation-1.1.pdf)<br></br>
+   - [CDMA Simulation](https://cnx.org/exports/381aff65-259e-4360-82c3-cd29ac139e05@1.1.pdf/cdma-simulation-1.1.pdf)<br>
 2. This system is used mainly in voice communications, however dealing with strings is much easier than sound in python.
 
 ## References
